@@ -75,13 +75,47 @@ JIT 编译 (JIT compilation)，运行时需要代码时，将 Microsoft 中间�
 
 ![image-20200612211320886](ios代码静态分析.assets/image-20200612211320886.png)
 
-
+- Error(string) 用于报错，返回NULL
 
 
 
 ### 词法分析
 
 
+
+
+
+
+
+
+
+
+
+- isalpha(char ) ：判断字符ch是否为英文字母，若为英文字母，返回非0（小写字母为2，大写字母为1）。若不是字母，返回0
+
+- isalnum(char)：判断字符变量c是否为字母或数字，若是则返回非零，否则返回零。
+
+  
+
+#### top-down 分析：
+
+- 用于分析二元运算符的表达式，如 a+b-c*d
+- 想要定义符号优先级
+
+
+
+#### stderr和stdout
+
+前者是两者都默认输出到屏幕中，但如果想要输入到磁盘文件中，则用stdout，如下：
+
+fprintf(stderr, "Can't open it!\n");
+fprintf(stdout, "Can't open it!\n");
+
+假设执行  ./out >> a.txt
+
+则 stderr输出到屏幕中，而stdout输出到a.txt中
+
+执行 ./out，则两者都输出到屏幕中
 
 
 
