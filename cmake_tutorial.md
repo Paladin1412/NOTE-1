@@ -16,7 +16,7 @@ ADD_EXECUTABLE(hello ${SRC_LIST}) # SRC_LIST is main.c, is set by "SET"
 
 - 对于上面的`SET(SRC_LIST mian.c t1.c,t2.c)`，如果将它们放入同一个`ADD_EXECUTABLE(hello ${SRC_LIST})`中，会报以下错误，因为它们有多个main函数
 
-![image-20200614090631750](cmake教程.assets/image-20200614090631750.png)
+![image-20200614090631750](./cmake教程.assets/image-20200614090631750.png)
 
 ​		如果三个文件中，仅有一个包含main函数，则不会报错
 
@@ -97,7 +97,7 @@ ADD_EXECUTABLE(hello main.c)
 >
 > 
 
-执行以上cmake后，会在build/lib中得到**lib**hello.so，即共享库，如果SHARED 改成STATIC，则为libhello_static.a即静态库
+执行以上cmake后，会在build/lib中得到**lib**hello.so，即共享库，如果SHARED 改成STATIC，则为libhello.a即静态库
 
 
 
