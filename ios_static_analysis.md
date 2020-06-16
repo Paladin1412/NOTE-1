@@ -29,7 +29,7 @@ AST不依赖于具体的文法，不依赖于语言的细节，我们将源代�
 
 > 抽象语法树（abstract syntax code，AST）是源代码的抽象语法结构的树状表示，树上的每个节点都表示源代码中的一种结构，之所以说是抽象的，是因为抽象语法树并不会表示出真实语法出现的每一个细节，比如说，嵌套括号被隐含在树的结构中，并没有以节点的形式呈现。
 
-![image-20200609185917719](ios static analysis.assets/image-20200609185917719.png)
+![image-20200609185917719](./ios_static_analysis.assets/image-20200609185917719.png)
 
 ### JIT编译
 
@@ -69,11 +69,11 @@ JIT 编译 (JIT compilation)，运行时需要代码时，将 Microsoft 中间�
 
 - 使用全局变量，string存变量，double存常量（常数）
 
-![image-20200612211209563](ios static analysis.assets/image-20200612211209563.png)
+![image-20200612211209563](./ios_static_analysis.assets/image-20200612211209563.png)
 
 - 读取文本（代码）时，使用`isspace`来判断是否空格，直到读取的为非空格
 
-![image-20200612211320886](ios static analysis.assets/image-20200612211320886.png)
+![image-20200612211320886](./ios_static_analysis.assets/image-20200612211320886.png)
 
 - Error(string) 用于报错，返回NULL
 
@@ -150,7 +150,7 @@ int f(int x) {
 
 主要内容：
 
-![image-20200616171144986](ios static analysis.assets/image-20200616171144986.png)
+![image-20200616171144986](./ios_static_analysis.assets/image-20200616171144986.png)
 
 
 
@@ -158,13 +158,13 @@ int f(int x) {
 
 虽然输出了很多无用的信息，但生成的ast还是在最后显示，与c差别不大
 
-![image-20200616223932049](ios static analysis.assets/image-20200616223932049.png)
+![image-20200616223932049](./ios_static_analysis.assets/image-20200616223932049.png)
 
 ### clang 指令的记录
 
 以t.c为例，代码为：
 
-![image-20200616180047100](ios static analysis.assets/image-20200616180047100.png)
+![image-20200616180047100](./ios_static_analysis.assets/image-20200616180047100.png)
 
 `clang --help`
 
@@ -172,33 +172,33 @@ int f(int x) {
 
 - `clang file.c -fsyntax-only`  ：检查语法的正确性，若正确则无输出
 
-![image-20200616175715798](ios static analysis.assets/image-20200616175715798.png)
+![image-20200616175715798](./ios_static_analysis.assets/image-20200616175715798.png)
 
 ​	修改代码后，因为没有语法错误，所以这里报warning（因为这里是检查语法的，而不是语义，print未声明，但是不违背语法规则）：
 
-![image-20200616180249628](ios static analysis.assets/image-20200616180249628.png)
+![image-20200616180249628](./ios_static_analysis.assets/image-20200616180249628.png)
 
 此处，修改代码，使其报error：
 
 ​	这里报error，因为是语法错误
 
-![image-20200616181035390](ios static analysis.assets/image-20200616181035390.png)
+![image-20200616181035390](./ios_static_analysis.assets/image-20200616181035390.png)
 
 
 
 - `clang file.c -S -emit-llvm -o -` ：输出未优化的llvm代码
 
-![image-20200616205938075](ios static analysis.assets/image-20200616205938075.png)
+![image-20200616205938075](./ios_static_analysis.assets/image-20200616205938075.png)
 
 
 
 - `clang file.c -S -emit-llvm -o - -O3` ：对代码进行优化，注意:`-O3` O 为大写，3为优化级别，可以是1--3
 
-![image-20200616211224635](ios static analysis.assets/image-20200616211224635.png)
+![image-20200616211224635](./ios_static_analysis.assets/image-20200616211224635.png)
 
 如果o为小写，则会生成文件名为`3`的未优化的llvm代码文件，当然，此时的3可以改为其他文件名
 
-![image-20200616211513019](ios static analysis.assets/image-20200616211513019.png)
+![image-20200616211513019](./ios_static_analysis.assets/image-20200616211513019.png)
 
 
 
@@ -206,7 +206,7 @@ int f(int x) {
 
 - `clang file.c -S -O3 -o -`  输出机器码
 
-![image-20200616222937036](ios static analysis.assets/image-20200616222937036.png)
+![image-20200616222937036](./ios_static_analysis.assets/image-20200616222937036.png)
 
 
 
